@@ -1,0 +1,105 @@
+{
+  "agent": "tester",
+  "base": "Qwen/Qwen2.5-1.5B-Instruct",
+  "adapter": "models/lora/tester",
+  "context_mean": 0.7757,
+  "lora_mean": 0.877,
+  "phase1_ollama_mean": 0.9407,
+  "accepted": true,
+  "context": {
+    "mean": 0.7757,
+    "per_agent": {
+      "tester": 0.7757
+    },
+    "results": [
+      {
+        "name": "tester/test_roto",
+        "expect_agent": "tester",
+        "route": "regla: 'test' -> tester",
+        "score": 0.6946,
+        "confidence": 0.9,
+        "tokens": 116
+      },
+      {
+        "name": "tester/suite_verde",
+        "expect_agent": "tester",
+        "route": "regla: 'test' -> tester",
+        "score": 0.7468,
+        "confidence": 0.5,
+        "tokens": 77
+      },
+      {
+        "name": "tester/linter",
+        "expect_agent": "tester",
+        "route": "regla: 'lint' -> tester",
+        "score": 0.9975,
+        "confidence": 1.0,
+        "tokens": 61
+      },
+      {
+        "name": "tester/recortar_rota",
+        "expect_agent": "tester",
+        "route": "regla: 'test' -> tester",
+        "score": 0.6942,
+        "confidence": 0.9,
+        "tokens": 135
+      },
+      {
+        "name": "tester/dos_verdes",
+        "expect_agent": "tester",
+        "route": "regla: 'test' -> tester",
+        "score": 0.7454,
+        "confidence": 0.5,
+        "tokens": 103
+      }
+    ]
+  },
+  "lora": {
+    "mean": 0.877,
+    "per_agent": {
+      "tester": 0.877
+    },
+    "results": [
+      {
+        "name": "tester/test_roto",
+        "expect_agent": "tester",
+        "route": "regla: 'test' -> tester",
+        "score": 0.6965,
+        "confidence": 0.9,
+        "tokens": 43
+      },
+      {
+        "name": "tester/suite_verde",
+        "expect_agent": "tester",
+        "route": "regla: 'test' -> tester",
+        "score": 0.9975,
+        "confidence": 0.9,
+        "tokens": 30
+      },
+      {
+        "name": "tester/linter",
+        "expect_agent": "tester",
+        "route": "regla: 'lint' -> tester",
+        "score": 0.9976,
+        "confidence": 0.9,
+        "tokens": 31
+      },
+      {
+        "name": "tester/recortar_rota",
+        "expect_agent": "tester",
+        "route": "regla: 'test' -> tester",
+        "score": 0.6958,
+        "confidence": 0.9,
+        "tokens": 47
+      },
+      {
+        "name": "tester/dos_verdes",
+        "expect_agent": "tester",
+        "route": "regla: 'test' -> tester",
+        "score": 0.9977,
+        "confidence": 0.9,
+        "tokens": 30
+      }
+    ]
+  }
+}

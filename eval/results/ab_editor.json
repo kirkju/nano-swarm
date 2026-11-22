@@ -1,0 +1,73 @@
+{
+  "agent": "editor",
+  "base": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "adapter": "models/lora/editor",
+  "context_mean": 0.9987,
+  "lora_mean": 0.9978,
+  "phase1_ollama_mean": 0.9913,
+  "accepted": false,
+  "context": {
+    "mean": 0.9987,
+    "per_agent": {
+      "editor": 0.9987
+    },
+    "results": [
+      {
+        "name": "editor/suma",
+        "expect_agent": "editor",
+        "route": "regla: 'escribe' -> editor",
+        "score": 0.9988,
+        "confidence": 0.5,
+        "tokens": 21
+      },
+      {
+        "name": "editor/es_par",
+        "expect_agent": "editor",
+        "route": "regla: 'escribe' -> editor",
+        "score": 0.999,
+        "confidence": 0.5,
+        "tokens": 24
+      },
+      {
+        "name": "editor/fix_resta",
+        "expect_agent": "editor",
+        "route": "regla: 'arregla' -> editor",
+        "score": 0.9983,
+        "confidence": 1.0,
+        "tokens": 43
+      }
+    ]
+  },
+  "lora": {
+    "mean": 0.9978,
+    "per_agent": {
+      "editor": 0.9978
+    },
+    "results": [
+      {
+        "name": "editor/suma",
+        "expect_agent": "editor",
+        "route": "regla: 'escribe' -> editor",
+        "score": 0.9979,
+        "confidence": 0.9,
+        "tokens": 31
+      },
+      {
+        "name": "editor/es_par",
+        "expect_agent": "editor",
+        "route": "regla: 'escribe' -> editor",
+        "score": 0.9978,
+        "confidence": 0.9,
+        "tokens": 33
+      },
+      {
+        "name": "editor/fix_resta",
+        "expect_agent": "editor",
+        "route": "regla: 'arregla' -> editor",
+        "score": 0.9978,
+        "confidence": 0.9,
+        "tokens": 31
+      }
+    ]
+  }
+}

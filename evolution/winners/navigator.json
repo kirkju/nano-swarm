@@ -1,0 +1,24 @@
+{
+  "variant_id": "navigator-v3",
+  "agent_id": "navigator",
+  "score": 0.7458,
+  "genome": {
+    "directives": [
+      "Responde en UNA sola frase.",
+      "No expliques tu proceso: da la respuesta y ya."
+    ],
+    "gen_options": {},
+    "model": null
+  },
+  "mutation": "añade directiva: 'No expliques tu proceso: da la respuesta y ya.'",
+  "parent_id": "navigator-v0",
+  "generation": 2,
+  "detail": {
+    "navigator/parse_config": 0.4942,
+    "navigator/timeout": 0.4971,
+    "navigator/estructura": 0.746,
+    "navigator/prestamo": 0.9943,
+    "navigator/version": 0.9972
+  },
+  "lineage_file": "evolution/lineage/navigator.jsonl"
+}

@@ -1,0 +1,23 @@
+{
+  "variant_id": "reviewer-v0",
+  "agent_id": "reviewer",
+  "score": 0.8763,
+  "genome": {
+    "directives": [
+      "Empieza tu veredicto con la palabra ACEPTA o RECHAZA."
+    ],
+    "gen_options": {},
+    "model": null
+  },
+  "mutation": "añade directiva: 'Empieza tu veredicto con la palabra ACEPTA o RECHAZA.'",
+  "parent_id": "reviewer-g0-actual",
+  "generation": 1,
+  "detail": {
+    "reviewer/division": 0.9958,
+    "reviewer/constantes_ok": 0.997,
+    "reviewer/sintaxis_rota": 0.6461,
+    "reviewer/eval_peligroso": 0.7457,
+    "reviewer/utilidades_ok": 0.9969
+  },
+  "lineage_file": "evolution/lineage/reviewer.jsonl"
+}

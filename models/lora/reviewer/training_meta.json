@@ -1,0 +1,16 @@
+{
+  "agent": "reviewer",
+  "base": "Qwen/Qwen2.5-1.5B-Instruct",
+  "data": "training\\data\\reviewer.jsonl",
+  "n_train": 151,
+  "n_val": 9,
+  "steps_run": 40,
+  "max_steps": 40,
+  "minutes": 2.2,
+  "max_minutes": 20.0,
+  "lr": 0.0001,
+  "rank": 16,
+  "val_loss_before": 1.4359,
+  "val_loss_after": 0.02,
+  "train_loss_final": 0.3259
+}

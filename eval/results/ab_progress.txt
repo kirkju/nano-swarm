@@ -1,0 +1,7 @@
+hecho: reviewer exit=0
+hecho: tester exit=0
+hecho: navigator exit=1
+hecho: editor exit=0
+AB_ALL_DONE
+PHASE2_FINAL_DONE exit=0
+PHASE3_DONE exit=-1

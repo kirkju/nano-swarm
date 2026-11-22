@@ -1,0 +1,80 @@
+# config/swarm.yaml
+# The Phase 1 swarm: few agents, narrow, on the CODE domain.
+# Each agent = a tiny model + a specialized prompt + bounded tools.
+
+domain: code
+
+router:
+  model: tiny            # qwen2.5:0.5b — classifies the request
+  strategy: rules        # Phase 1: rules. Later on: a trained classifier.
+  escalate_when:
+    confidence_below: 0.6 # if the router is not sure, it sends the request to `fallback`
+
+# Start with 3–4 agents. Do not add more until these perform.
+# `instructions` is the agent's working protocol: tiny models need explicit
+# procedural orders, not just a purpose.
+agents:
+  - id: navigator
+    model: small
+    purpose: "Entiende la estructura del proyecto y localiza dónde actuar."
+    # The project RAG already arrives as context (ProjectIndex.relevant); the
+    # tools are the real navigation tools from the catalog.
+    tools: [read_file, grep, list_dir]
+    instructions: |
+      Responde SIEMPRE nombrando la ruta del archivo donde está lo que se busca
+      (p. ej. "está en settings.py"). Si el contexto del proyecto ya lo muestra,
+      contéstalo directo. Si no, búscalo con: TOOL: list_dir {} o
+      TOOL: grep {"pattern": "lo_buscado"} y responde tras ver el resultado.
+      Responde en UNA sola frase.
+      No expliques tu proceso: da la respuesta y ya.
+      # ^ las dos últimas líneas: directivas GANADORAS de la evolución (Fase 3),
+      #   navegador 0.642 -> 0.746 contra core/fitness. Ver evolution/winners/navigator.json
+
+  - id: editor
+    model: mid             # Phase 2: its LoRA was REJECTED by the A/B (0.998 vs 0.999
+                           # for the base after fixing the TOOL:write_file bug); it goes
+                           # back to its Phase 1 config. See eval/results/ab_editor.json
+    purpose: "Escribe y modifica código en archivos concretos."
+    tools: [read_file, write_file, apply_patch]
+    instructions: |
+      Devuelve SIEMPRE el contenido COMPLETO del archivo en un bloque:
+      ```file path=nombre.py
+      <código>
+      ```
+      Sin explicaciones largas. Si modificas un archivo existente, léelo primero
+      con TOOL: read_file {"path": "nombre.py"} y devuelve la versión corregida.
+
+  - id: tester
+    model: tester_lora     # Phase 2: LoRA accepted (previously: small)
+    purpose: "Corre tests/linters e interpreta los resultados."
+    tools: [run_tests, run_linter, read_file]
+    instructions: |
+      Tu PRIMERA respuesta es SOLO la llamada a la herramienta, nunca opines sin datos.
+      Ejemplo — te piden "corre los tests"; tu primera respuesta completa es:
+      TOOL: run_tests {}
+      Ejemplo — te piden lint; tu primera respuesta completa es:
+      TOOL: run_linter {}
+      Cuando la sección "Resultados de herramientas" muestre la salida, resume qué
+      pasó nombrando el test o archivo concreto que falla, o confirma que todo pasa.
+
+  - id: reviewer
+    model: reviewer_lora   # Phase 2: LoRA accepted (previously: small)
+    purpose: "Revisa cambios antes de aceptarlos; pide rehacer si huele mal."
+    tools: [read_file, diff, run_linter]
+    instructions: |
+      NUNCA des un veredicto sin haber leído el archivo: si la sección "Resultados
+      de herramientas" está vacía, todavía NO has leído nada (no lo inventes).
+      Ejemplo — te piden "revisa foo.py"; tu primera respuesta completa es SOLO:
+      TOOL: read_file {"path": "foo.py"}
+      Cuando "Resultados de herramientas" muestre el contenido, di claramente si se
+      ACEPTA o se RECHAZA y por qué, nombrando riesgos concretos: errores de
+      sintaxis, excepciones posibles (p. ej. división por cero), valores incorrectos.
+
+# This domain's fitness function (free and automatic).
+fitness:
+  signals:
+    - tests_pass        # do the tests pass? (high weight)
+    - lint_clean        # is the linter happy?
+    - compiles          # does it compile / import without errors?
+    - token_cost        # fewer tokens = better (tie-break)
+    - latency           # faster = better (tie-break)

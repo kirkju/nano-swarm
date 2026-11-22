@@ -1,0 +1,43 @@
+[project]
+name = "nano-swarm"
+version = "0.1.0"
+description = "A swarm of nano-agents on tiny language models"
+requires-python = ">=3.11"
+
+# Deliberately minimal core: Phase 1 runs with this and nothing else.
+# (The Phase 1 RAG works by word overlap, no embeddings -> no faiss.)
+dependencies = [
+    "pyyaml",          # read config/*.yaml
+    "pytest",          # core tests
+]
+
+[project.optional-dependencies]
+# The default backend talks to Ollama over HTTP (urllib), so the official
+# client is optional. Install it if you prefer: pip install -e ".[ollama]"
+ollama = ["ollama"]
+
+# Optional upgrade of the RAG to embedding search (not needed in Phase 1):
+#   pip install -e ".[embeddings]"
+embeddings = ["faiss-cpu"]   # or sqlite-vec
+
+# Phase 2 (specialization with LoRA): pip install -e ".[phase2]"
+# torch is installed separately from the PyTorch CUDA index (see README):
+#   uv pip install torch --index-url https://download.pytorch.org/whl/cu128
+# bitsandbytes is not needed: bases <=1.5B train in bf16 on 8 GB of VRAM.
+phase2 = ["peft", "transformers", "datasets", "accelerate"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+# Flat layout with several top-level packages: they must be listed explicitly
+# (setuptools auto-discovery refuses, and rightly so).
+[tool.setuptools]
+packages = [
+    "core", "core.fitness", "core.memory",
+    "domains", "domains.code", "domains.pc", "domains.pc.safety",
+    "agents", "evolution", "eval",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

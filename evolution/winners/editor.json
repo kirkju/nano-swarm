@@ -1,0 +1,22 @@
+{
+  "variant_id": "editor-v12",
+  "agent_id": "editor",
+  "score": 0.9978,
+  "genome": {
+    "directives": [],
+    "gen_options": {
+      "temperature": 0.0,
+      "num_predict": 512
+    },
+    "model": null
+  },
+  "mutation": "num_predict -> 512",
+  "parent_id": "editor-v2",
+  "generation": 2,
+  "detail": {
+    "editor/suma": 0.9979,
+    "editor/es_par": 0.9976,
+    "editor/fix_resta": 0.9978
+  },
+  "lineage_file": "evolution/lineage/editor.jsonl"
+}

@@ -1,0 +1,16 @@
+{
+  "agent": "editor",
+  "base": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "data": "training\\data\\editor.jsonl",
+  "n_train": 160,
+  "n_val": 10,
+  "steps_run": 40,
+  "max_steps": 40,
+  "minutes": 7.0,
+  "max_minutes": 20.0,
+  "lr": 0.0001,
+  "rank": 16,
+  "val_loss_before": 0.5786,
+  "val_loss_after": 0.3168,
+  "train_loss_final": 0.3722
+}

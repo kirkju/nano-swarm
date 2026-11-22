@@ -1,0 +1,23 @@
+{
+  "variant_id": "tester-v7",
+  "agent_id": "tester",
+  "score": 0.8775,
+  "genome": {
+    "directives": [
+      "Cita textualmente la línea más informativa de la salida de pytest."
+    ],
+    "gen_options": {},
+    "model": null
+  },
+  "mutation": "añade directiva: 'Cita textualmente la línea más informativa de la salida de pytest.'",
+  "parent_id": "tester-g0-actual",
+  "generation": 1,
+  "detail": {
+    "tester/test_roto": 0.6968,
+    "tester/suite_verde": 0.9978,
+    "tester/linter": 0.9978,
+    "tester/recortar_rota": 0.697,
+    "tester/dos_verdes": 0.9979
+  },
+  "lineage_file": "evolution/lineage/tester.jsonl"
+}

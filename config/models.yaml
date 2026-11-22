@@ -1,0 +1,56 @@
+# config/models.yaml
+# Registry of tiny models. Start light; go up in size only if the task calls for it.
+# All quantized (Q4) to run cheap. Served through Ollama by default.
+
+backend: ollama        # ollama | vllm
+host: http://localhost:11434
+
+models:
+  # --- The lightest: routing, classification, short tasks ---
+  tiny:
+    name: qwen2.5:0.5b
+    role: "router and classification; the cheapest agent"
+    approx_vram_gb: 0.5
+
+  small:
+    name: qwen2.5:1.5b
+    role: "general agents; a good balance of cost and quality"
+    approx_vram_gb: 1.2
+
+  # --- When a task needs more reasoning ---
+  mid:
+    name: qwen2.5:3b
+    role: "more complex code tasks; structured chat"
+    approx_vram_gb: 2.5
+
+  # --- Escape-hatch model: only when the router decides to escalate ---
+  fallback:
+    name: qwen2.5-coder:7b   # already installed on this machine (Apache 2.0); phi4-mini works too if you pull it
+    role: "hard reasoning; called only when confidence is low"
+    approx_vram_gb: 4.7
+
+  # --- Phase 2: specialized agents (HF base + LoRA), ACCEPTED by A/B ---
+  # Served by HFLocalBackend (transformers/peft); Ollama does not import Qwen2
+  # safetensors LoRAs. Verdicts (clean pipeline) in eval/results/ab_*.json.
+  # A LoRA is used ONLY if its A/B measures better than the SAME base with no adapter.
+  tester_lora:
+    backend: hf
+    base: Qwen/Qwen2.5-1.5B-Instruct           # Apache-2.0
+    adapter: models/lora/tester
+    role: "specialized tester; A/B ACCEPTED: 0.877 vs 0.776 (base without LoRA)"
+
+  reviewer_lora:
+    backend: hf
+    base: Qwen/Qwen2.5-1.5B-Instruct           # Apache-2.0
+    adapter: models/lora/reviewer
+    role: "specialized reviewer; A/B ACCEPTED: 0.876 vs 0.724 (base without LoRA)"
+
+  # LoRAs REJECTED by the A/B (they do not beat their base; kept on disk for
+  # auditing but NOT served):
+  #   editor    (models/lora/editor)    0.998 vs 0.999 -> editor uses `mid` (Ollama)
+  #   navigator (models/lora/navigator) 0.798 vs 0.799 -> navigator uses `small` (Ollama)
+  # The acceptance gate doing its job: a LoRA that does not improve does not get in.
+
+# Note: these names are reasonable starting points as of 2026. Check the
+# available versions with `ollama list` and adjust. Llama 3.2 1B/3B and the
+# Nemotron Nano models are valid alternatives if you want to compare.

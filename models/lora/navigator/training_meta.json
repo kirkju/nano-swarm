@@ -1,0 +1,16 @@
+{
+  "agent": "navigator",
+  "base": "Qwen/Qwen2.5-1.5B-Instruct",
+  "data": "training\\data\\navigator.jsonl",
+  "n_train": 108,
+  "n_val": 6,
+  "steps_run": 28,
+  "max_steps": 28,
+  "minutes": 4.9,
+  "max_minutes": 20.0,
+  "lr": 0.0001,
+  "rank": 16,
+  "val_loss_before": 1.1393,
+  "val_loss_after": 0.03,
+  "train_loss_final": 0.2057
+}

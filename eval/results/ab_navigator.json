@@ -1,0 +1,105 @@
+{
+  "agent": "navigator",
+  "base": "Qwen/Qwen2.5-1.5B-Instruct",
+  "adapter": "models/lora/navigator",
+  "context_mean": 0.7988,
+  "lora_mean": 0.7981,
+  "phase1_ollama_mean": 0.9923,
+  "accepted": false,
+  "context": {
+    "mean": 0.7988,
+    "per_agent": {
+      "navigator": 0.7988
+    },
+    "results": [
+      {
+        "name": "navigator/parse_config",
+        "expect_agent": "navigator",
+        "route": "regla: 'localiza' -> navigator",
+        "score": 0.9975,
+        "confidence": 0.5,
+        "tokens": 43
+      },
+      {
+        "name": "navigator/timeout",
+        "expect_agent": "navigator",
+        "route": "regla: 'encuentra' -> navigator",
+        "score": 0.9991,
+        "confidence": 0.5,
+        "tokens": 20
+      },
+      {
+        "name": "navigator/estructura",
+        "expect_agent": "navigator",
+        "route": "regla: 'estructura' -> navigator",
+        "score": 0.4993,
+        "confidence": 0.99,
+        "tokens": 17
+      },
+      {
+        "name": "navigator/prestamo",
+        "expect_agent": "navigator",
+        "route": "regla: 'localiza' -> navigator",
+        "score": 0.999,
+        "confidence": 0.5,
+        "tokens": 22
+      },
+      {
+        "name": "navigator/version",
+        "expect_agent": "navigator",
+        "route": "regla: 'encuentra' -> navigator",
+        "score": 0.4989,
+        "confidence": 1.0,
+        "tokens": 26
+      }
+    ]
+  },
+  "lora": {
+    "mean": 0.7981,
+    "per_agent": {
+      "navigator": 0.7981
+    },
+    "results": [
+      {
+        "name": "navigator/parse_config",
+        "expect_agent": "navigator",
+        "route": "regla: 'localiza' -> navigator",
+        "score": 0.4986,
+        "confidence": 0.9,
+        "tokens": 20
+      },
+      {
+        "name": "navigator/timeout",
+        "expect_agent": "navigator",
+        "route": "regla: 'encuentra' -> navigator",
+        "score": 0.4986,
+        "confidence": 0.9,
+        "tokens": 20
+      },
+      {
+        "name": "navigator/estructura",
+        "expect_agent": "navigator",
+        "route": "regla: 'estructura' -> navigator",
+        "score": 0.9964,
+        "confidence": 0.85,
+        "tokens": 53
+      },
+      {
+        "name": "navigator/prestamo",
+        "expect_agent": "navigator",
+        "route": "regla: 'localiza' -> navigator",
+        "score": 0.9984,
+        "confidence": 0.9,
+        "tokens": 23
+      },
+      {
+        "name": "navigator/version",
+        "expect_agent": "navigator",
+        "route": "regla: 'encuentra' -> navigator",
+        "score": 0.9986,
+        "confidence": 0.9,
+        "tokens": 21
+      }
+    ]
+  }
+}

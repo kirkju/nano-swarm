@@ -1,0 +1,155 @@
+{
+  "mean": 0.9613,
+  "per_agent": {
+    "editor": 0.9975,
+    "navigator": 0.9391,
+    "tester": 0.9974,
+    "reviewer": 0.9256
+  },
+  "results": [
+    {
+      "name": "editor/suma",
+      "expect_agent": "editor",
+      "route": "regla: 'escribe' -> editor",
+      "score": 0.9973,
+      "confidence": 0.9,
+      "tokens": 31
+    },
+    {
+      "name": "editor/es_par",
+      "expect_agent": "editor",
+      "route": "regla: 'escribe' -> editor",
+      "score": 0.9975,
+      "confidence": 0.9,
+      "tokens": 33
+    },
+    {
+      "name": "editor/fix_resta",
+      "expect_agent": "editor",
+      "route": "regla: 'arregla' -> editor",
+      "score": 0.9978,
+      "confidence": 0.9,
+      "tokens": 31
+    },
+    {
+      "name": "navigator/parse_config",
+      "expect_agent": "navigator",
+      "route": "regla: 'localiza' -> navigator",
+      "score": 0.9885,
+      "confidence": 1.0,
+      "tokens": 82
+    },
+    {
+      "name": "navigator/timeout",
+      "expect_agent": "navigator",
+      "route": "regla: 'encuentra' -> navigator",
+      "score": 0.9893,
+      "confidence": 1.0,
+      "tokens": 67
+    },
+    {
+      "name": "navigator/estructura",
+      "expect_agent": "navigator",
+      "route": "regla: 'estructura' -> navigator",
+      "score": 0.7423,
+      "confidence": 0.5,
+      "tokens": 152
+    },
+    {
+      "name": "navigator/prestamo",
+      "expect_agent": "navigator",
+      "route": "regla: 'localiza' -> navigator",
+      "score": 0.9868,
+      "confidence": 1.0,
+      "tokens": 123
+    },
+    {
+      "name": "navigator/version",
+      "expect_agent": "navigator",
+      "route": "regla: 'encuentra' -> navigator",
+      "score": 0.9884,
+      "confidence": 1.0,
+      "tokens": 54
+    },
+    {
+      "name": "tester/test_roto",
+      "expect_agent": "tester",
+      "route": "regla: 'test' -> tester",
+      "score": 0.9969,
+      "confidence": 0.9,
+      "tokens": 43
+    },
+    {
+      "name": "tester/suite_verde",
+      "expect_agent": "tester",
+      "route": "regla: 'test' -> tester",
+      "score": 0.9979,
+      "confidence": 0.9,
+      "tokens": 30
+    },
+    {
+      "name": "tester/linter",
+      "expect_agent": "tester",
+      "route": "regla: 'lint' -> tester",
+      "score": 0.9978,
+      "confidence": 0.9,
+      "tokens": 31
+    },
+    {
+      "name": "tester/recortar_rota",
+      "expect_agent": "tester",
+      "route": "regla: 'test' -> tester",
+      "score": 0.9967,
+      "confidence": 0.9,
+      "tokens": 47
+    },
+    {
+      "name": "tester/dos_verdes",
+      "expect_agent": "tester",
+      "route": "regla: 'test' -> tester",
+      "score": 0.9977,
+      "confidence": 0.9,
+      "tokens": 30
+    },
+    {
+      "name": "reviewer/division",
+      "expect_agent": "reviewer",
+      "route": "regla: 'revisa' -> reviewer",
+      "score": 0.9952,
+      "confidence": 0.9,
+      "tokens": 60
+    },
+    {
+      "name": "reviewer/constantes_ok",
+      "expect_agent": "reviewer",
+      "route": "regla: 'revisa' -> reviewer",
+      "score": 0.9967,
+      "confidence": 0.9,
+      "tokens": 43
+    },
+    {
+      "name": "reviewer/sintaxis_rota",
+      "expect_agent": "reviewer",
+      "route": "regla: 'revisa' -> reviewer",
+      "score": 0.6445,
+      "confidence": 0.9,
+      "tokens": 67
+    },
+    {
+      "name": "reviewer/eval_peligroso",
+      "expect_agent": "reviewer",
+      "route": "regla: 'revisa' -> reviewer",
+      "score": 0.9949,
+      "confidence": 0.9,
+      "tokens": 61
+    },
+    {
+      "name": "reviewer/utilidades_ok",
+      "expect_agent": "reviewer",
+      "route": "regla: 'revisa' -> reviewer",
+      "score": 0.9965,
+      "confidence": 0.9,
+      "tokens": 43
+    }
+  ]
+}

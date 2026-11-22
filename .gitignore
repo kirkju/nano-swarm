@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.env
+.swarm/
+.venv/
+*.db
+nano_swarm.egg-info/
+models/lora/**/checkpoint-*/
+eval/results/*.tmp.json
+
+*.log
+models/lora/**/*.safetensors
+.pytest_cache/

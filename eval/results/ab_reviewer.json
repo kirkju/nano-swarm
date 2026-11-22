@@ -1,0 +1,105 @@
+{
+  "agent": "reviewer",
+  "base": "Qwen/Qwen2.5-1.5B-Instruct",
+  "adapter": "models/lora/reviewer",
+  "context_mean": 0.7242,
+  "lora_mean": 0.876,
+  "phase1_ollama_mean": 0.8538,
+  "accepted": true,
+  "context": {
+    "mean": 0.7242,
+    "per_agent": {
+      "reviewer": 0.7242
+    },
+    "results": [
+      {
+        "name": "reviewer/division",
+        "expect_agent": "reviewer",
+        "route": "regla: 'revisa' -> reviewer",
+        "score": 0.744,
+        "confidence": 0.0,
+        "tokens": 95
+      },
+      {
+        "name": "reviewer/constantes_ok",
+        "expect_agent": "reviewer",
+        "route": "regla: 'revisa' -> reviewer",
+        "score": 0.7458,
+        "confidence": 0.0,
+        "tokens": 87
+      },
+      {
+        "name": "reviewer/sintaxis_rota",
+        "expect_agent": "reviewer",
+        "route": "regla: 'revisa' -> reviewer",
+        "score": 0.6476,
+        "confidence": 0.0,
+        "tokens": 54
+      },
+      {
+        "name": "reviewer/eval_peligroso",
+        "expect_agent": "reviewer",
+        "route": "regla: 'revisa' -> reviewer",
+        "score": 0.7435,
+        "confidence": 0.0,
+        "tokens": 135
+      },
+      {
+        "name": "reviewer/utilidades_ok",
+        "expect_agent": "reviewer",
+        "route": "regla: 'revisa' -> reviewer",
+        "score": 0.74,
+        "confidence": 0.5,
+        "tokens": 207
+      }
+    ]
+  },
+  "lora": {
+    "mean": 0.876,
+    "per_agent": {
+      "reviewer": 0.876
+    },
+    "results": [
+      {
+        "name": "reviewer/division",
+        "expect_agent": "reviewer",
+        "route": "regla: 'revisa' -> reviewer",
+        "score": 0.9953,
+        "confidence": 0.9,
+        "tokens": 60
+      },
+      {
+        "name": "reviewer/constantes_ok",
+        "expect_agent": "reviewer",
+        "route": "regla: 'revisa' -> reviewer",
+        "score": 0.9969,
+        "confidence": 0.9,
+        "tokens": 43
+      },
+      {
+        "name": "reviewer/sintaxis_rota",
+        "expect_agent": "reviewer",
+        "route": "regla: 'revisa' -> reviewer",
+        "score": 0.3951,
+        "confidence": 0.9,
+        "tokens": 67
+      },
+      {
+        "name": "reviewer/eval_peligroso",
+        "expect_agent": "reviewer",
+        "route": "regla: 'revisa' -> reviewer",
+        "score": 0.9958,
+        "confidence": 0.9,
+        "tokens": 61
+      },
+      {
+        "name": "reviewer/utilidades_ok",
+        "expect_agent": "reviewer",
+        "route": "regla: 'revisa' -> reviewer",
+        "score": 0.9968,
+        "confidence": 0.9,
+        "tokens": 43
+      }
+    ]
+  }
+}
